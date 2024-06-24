@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed and Expandable Content</title>
+    <style>
+        .container {
+            position: relative;
+            height: 300px; /* Altura fija para el contenedor */
+        }
+
+        .expandable-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: auto; /* Permitir que el contenido se expanda */
+            background-color: lightgray;
+        }
+
+        .fixed-content {
+            position: absolute;
+            top: 200px; /* Ajustar según sea necesario */
+            left: 0;
+            right: 0;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="expandable-content">
+            Contenido que se expande<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+            Añade más contenido aquí<br>
+
+        </div>
+        <div class="fixed-content">
+            Contenido fijo
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #191919;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+#title {
+    font-family: "Playwrite NG Modern", cursive;
+      
+    font-size: 40px;
+}
+
+h2 {
+    font-size: larger;
+    font-weight: 600;
+
+    color: white;
+
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+.card {
+    display: flex;
+    overflow: auto;
+
+    z-index: 20;
+}
+
+.card::-webkit-scrollbar {
+    display: none;
+}
+
+#plantName {
+    font-size: large;
+    font-weight: bold;
+
+    margin-bottom: 2%;
+
+    color: black;
+}
+
+#plantDesc {
+    color: rgb(49, 42, 42);
+}
+
+#plantLM {
+    font-weight: 600;
+    font-size: 14px;
+
+    color:rgb(59, 59, 209)
+}
+
+#plantLM:hover {
+    background-color: rgba(59, 59, 209, 0.207);
+}
+
+#box {
+    background-color: #D8E9A8;
+
+    width: 300px;
+    height: 300px;
+    min-width: 300px;
+    min-height: 300px;
+    margin: 5px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
