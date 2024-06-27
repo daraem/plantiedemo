@@ -9,7 +9,7 @@ function MediaCard(props) {
   const [displayCard, setDisplayCard] = useState([]);
   let shortedDesc;
 
-  function outsideClick(ref) {
+  function OutsideClick(ref) {
     useEffect(() => {
       const handleClickOutside = (e) => {
         if(ref.current && !ref.current.contains(e.target)) {
@@ -24,7 +24,7 @@ function MediaCard(props) {
     }, [ref])
   }
 
-  outsideClick(wrapperRef)
+  OutsideClick(wrapperRef)
 
   function MediaCardExpanded() {
     return(
