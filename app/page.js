@@ -177,7 +177,7 @@ export default function Home() {
                       <h1 className='font-bold text-[50px] text-center font-[""Playwrite NG Modern", cursive"]'>Welcome!</h1>
                 </div>
                 <div className="flex justify-center items-center">
-                    <p className="text-justify w-[75%]">It seems is your first time visiting this page. Don&apost forget checking <a href='/info' className='text-blue-800 underline'>info page</a> and enjoy!</p>
+                    <p className="text-justify w-[75%]">It seems is your first time visiting this page. Don&apos;t forget checking <a href='/info' className='text-blue-800 underline'>info page</a> and enjoy!</p>
                 </div>
                 <div className='flex justify-center items-center m-[5vh]'>
                   <button className='border-4 text-white font-[600] text-[300] border-white rounded-[10px] w-[110px] h-[40px] bg-[#4E9F3D] hover:bg-[#1E5128]' onClick={() => setWelcomeCard(false)}>Okay!</button>
