@@ -6,7 +6,7 @@ export default function home() {
             <div className="bg-white w-[60%] h-[70%] rounded-xl">
                 <div className="flex justify-center items-start">
                     <div className="bg-white w-[25%] h-[45%] my-[1%]">
-                        <img src="../logo/plantiedblogo.png" className="h-[100%] w-[100%]"></img>
+                        <img src="../Logo/PlantieDBLogo.png" className="h-[100%] w-[100%]"></img>
                     </div>
                 </div>
                 <div className="flex justify-center items-center">
