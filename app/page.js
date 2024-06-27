@@ -86,6 +86,8 @@ function MediaCard(props) {
 
 export default function Home() {
 
+  const [welcomeCard, setWelcomeCard] = useState(false)
+
   const overFlowRef1 = useRef(null);
   const overFlowRef2 = useRef(null);
   const overFlowRef3 = useRef(null);
@@ -95,6 +97,13 @@ export default function Home() {
   const buttonRef3 = useRef(null);
 
   useEffect(() => {
+
+    if(!localStorage.getItem('identifier')) {
+      const identifier = Math.random().toString(16).slice(2);
+
+      localStorage.setItem('identifier', identifier);
+      setWelcomeCard(true);
+    }
 
     if(overFlowRef1) {
       if(buttonRef1) {
@@ -162,6 +171,20 @@ export default function Home() {
     
   return (
     <>
+        <div className={welcomeCard ? "fixed top-0 left-0 w-[100%] h-[100%] flex justify-center items-center backdrop-blur-sm z-40" : "hidden"}>
+            <div className="bg-white w-[70vh] h-[40vh] rounded-xl border-4 border-black">
+                <div className="flex justify-center items-start my-[1%]">
+                      <h1 className='font-bold text-[50px] text-center font-[""Playwrite NG Modern", cursive"]'>Welcome!</h1>
+                </div>
+                <div className="flex justify-center items-center">
+                    <p className="text-justify w-[75%]">It seems is your first time visiting this page. Don't forget checking <a href='/info' className='text-blue-800 underline'>info page</a> and enjoy!</p>
+                </div>
+                <div className='flex justify-center items-center m-[5vh]'>
+                  <button className='border-4 text-white font-[600] text-[300] border-white rounded-[10px] w-[110px] h-[40px] bg-[#4E9F3D] hover:bg-[#1E5128]' onClick={() => setWelcomeCard(false)}>Okay!</button>
+                </div>
+            </div>
+        </div>
+
       <div id="Medicinal Plants" className='relative'>
         <h2>Medicinal Plants</h2>
         <div id='card1' className='card' ref={overFlowRef1}>
