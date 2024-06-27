@@ -13,7 +13,7 @@ function MediaCard(props) {
     useEffect(() => {
       const handleClickOutside = (e) => {
         if(ref.current && !ref.current.contains(e.target)) {
-          setDisplayCard([...displayCard, <></>])
+          setDisplayCard([...displayCard, <span key={displayCard.length}></span>])
         }
       }
 
@@ -32,7 +32,7 @@ function MediaCard(props) {
           <div className='bg-[#D8E9A8] rounded-[10px] w-[70vh] h-[75vh] flex flex-col' ref={wrapperRef}>
             <div className='relative'>
               <div className='absolute top-0 right-0 bg-white w-[5vh] h-[5vh] rounded-full mx-[3%] my-[3%]'>
-                <div className='w-[100%] h-[100%] flex justify-center items-center hover:cursor-pointer' onClick={() => {setDisplayCard([...displayCard], <></>)}}>
+                <div className='w-[100%] h-[100%] flex justify-center items-center hover:cursor-pointer' onClick={() => {setDisplayCard([...displayCard], <span key={displayCard.length}></span>)}}>
                   <svg
                   width="24"
                   height="24"
@@ -75,7 +75,7 @@ function MediaCard(props) {
       <div className='relative h-[300px] mx-[3%] z-30'>
         <p className='break-words absolute top-0 left-0 right-0 h-auto' id='plantDesc'>{shortedDesc}</p>
         <span className='absolute top-[60%] mx-[2%] left-0 right-0 text-right'>
-          <button className='border-4 border-[#D8E9A8] rounded-[10px] w-[110px] h-[40px] transition ease-in-out delay-50' id='plantLM' onClick={() => {setDisplayCard([...displayCard, <MediaCardExpanded></MediaCardExpanded>])}}>LEARN MORE</button>
+          <button className='border-4 border-[#D8E9A8] rounded-[10px] w-[110px] h-[40px] transition ease-in-out delay-50' id='plantLM' onClick={() => {setDisplayCard([...displayCard, <MediaCardExpanded key={displayCard.length}></MediaCardExpanded>])}}>LEARN MORE</button>
         </span>
       </div>
     </div>
