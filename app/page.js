@@ -2,9 +2,61 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 
+
 function MediaCard(props) {
 
-  let shortedDesc
+  const wrapperRef = useRef(null)
+  const [displayCard, setDisplayCard] = useState([]);
+  let shortedDesc;
+
+  function outsideClick(ref) {
+    useEffect(() => {
+      const handleClickOutside = (e) => {
+        if(ref.current && !ref.current.contains(e.target)) {
+          setDisplayCard([...displayCard, <></>])
+        }
+      }
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside)
+      };
+    }, [ref])
+  }
+
+  outsideClick(wrapperRef)
+
+  function MediaCardExpanded() {
+    return(
+      <div className='fixed top-0 left-0 w-[100%] h-[100%] z-50 flex justify-center items-center backdrop-blur-sm'> 
+          <div className='bg-[#D8E9A8] rounded-[10px] w-[70vh] h-[75vh] flex flex-col' ref={wrapperRef}>
+            <div className='relative'>
+              <div className='absolute top-0 right-0 bg-white w-[5vh] h-[5vh] rounded-full mx-[3%] my-[3%]'>
+                <div className='w-[100%] h-[100%] flex justify-center items-center hover:cursor-pointer' onClick={() => {setDisplayCard([...displayCard], <></>)}}>
+                  <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  >
+                  <path
+                  d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
+                  fill="currentColor"
+                  />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <img src={"/" + props.img} className='min-h-[250px] max-h-[250px] rounded-t-[10px]'></img>
+            <h1 className='mx-[3%] text-[40px] font-bold'>{props.Name}</h1>
+            <div className='relative h-[300px] mx-[3%] z-30'>
+            <p className='break-words absolute top-0 left-0 right-0 h-auto' id='plantDesc'>{props.desc}</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   if(props.desc) {
     if((props.desc).length > 87) {
@@ -16,19 +68,21 @@ function MediaCard(props) {
   }
 
   return (
+    <>
     <div id='box' className=''>
       <img src={"/" + props.img} className=' min-h-[150px] max-h-[150px] rounded-t-[10px] z-20 select-none'></img>
       <h1 className='mx-[3%] z-30' id='plantName'>{props.Name}</h1>
       <div className='relative h-[300px] mx-[3%] z-30'>
         <p className='break-words absolute top-0 left-0 right-0 h-auto' id='plantDesc'>{shortedDesc}</p>
         <span className='absolute top-[60%] mx-[2%] left-0 right-0 text-right'>
-          <button className='border-4 border-[#D8E9A8] rounded-[10px] w-[110px] h-[40px] transition ease-in-out delay-50' id='plantLM'>LEARN MORE</button>
+          <button className='border-4 border-[#D8E9A8] rounded-[10px] w-[110px] h-[40px] transition ease-in-out delay-50' id='plantLM' onClick={() => {setDisplayCard([...displayCard, <MediaCardExpanded></MediaCardExpanded>])}}>LEARN MORE</button>
         </span>
       </div>
     </div>
+    {displayCard}
+    </>
   );
 }
-
 
 export default function Home() {
 
